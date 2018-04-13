@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "267108865283",
+    "firebase_url": "https://aplikasikesehatan-e5566.firebaseio.com",
+    "project_id": "aplikasikesehatan-e5566",
+    "storage_bucket": "aplikasikesehatan-e5566.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:267108865283:android:492199821efe5910",
+        "android_client_info": {
+          "package_name": "com.kelompok2.android.aplikasikesehatan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "267108865283-lnofb4vr1p6ftjkg9kfjebeg279e6s4b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kelompok2.android.aplikasikesehatan",
+            "certificate_hash": "dfff613cdea321e4bb45df3738c563500090dd5f"
+          }
+        },
+        {
+          "client_id": "267108865283-t3icoo2ggpji2s8kosq66ubpvkffvmh6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kelompok2.android.aplikasikesehatan",
+            "certificate_hash": "8fbbdca50397a6026947b69bb3eca1d50a5542ad"
+          }
+        },
+        {
+          "client_id": "267108865283-vqa1dagdlln71mjbooi3lvu5lhmqjh8v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATx319YA7jdIc0CqwL0dQdGrLtJ3kkFyM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "267108865283-vqa1dagdlln71mjbooi3lvu5lhmqjh8v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
