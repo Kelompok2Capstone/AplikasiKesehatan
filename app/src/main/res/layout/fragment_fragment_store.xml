@@ -1,0 +1,20 @@
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:gravity="center"
+    tools:context="com.kelompok2.android.aplikasikesehatan.FragmentStore">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Breakfast: one apple, half bowl pomegranate, 2 glass of water
+Lunch: Sauteed vegetables(mushroom, bell, peppers, brocoli, purple cabbage and herbs), 2 glass of water
+Dinner: Fruit salad(apple + pear + melon + papaya + strawberries), 2 glass of water"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        />
+
+</LinearLayout>

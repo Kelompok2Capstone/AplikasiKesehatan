@@ -12,17 +12,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".AwalActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".AwalActivity" />
         <activity android:name=".AddPostActivity" />
-        <activity android:name=".PostDetailActivity"></activity>
+        <activity
+            android:name=".PostDetailActivity"
+            android:parentActivityName=".ForumActivity" />
+        <activity android:name=".PostFragment" />
+        <activity android:name=".ForumActivity" />
+        <activity android:name=".Home" />
+        <activity
+            android:name=".KomenActivity"
+            android:parentActivityName=".PostDetailActivity" />
+        <activity android:name=".DietActivity" />
+        <activity android:name=".InfoActivity" />
+        <activity android:name=".InfoDetailActivity" />
+        <activity android:name=".ProfilActivity" />
+        <activity android:name=".UploadPhoto"></activity>
     </application>
 
 </manifest>

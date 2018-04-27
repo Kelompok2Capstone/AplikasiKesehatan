@@ -2,15 +2,16 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:id="@+id/action_logout_Btn"
-        android:title="@string/action_logout_text" />
+
     <item
         android:id="@+id/action_setting_Btn"
         android:title="@string/action_settings_text" />
+    <!--<item-->
+        <!--android:id="@+id/action_search_Btn"-->
+        <!--android:icon="@drawable/ic_search"-->
+        <!--android:title="@string/action_search_text"-->
+        <!--app:showAsAction="always" />-->
     <item
-        android:id="@+id/action_search_Btn"
-        android:icon="@drawable/ic_search"
-        android:title="@string/action_search_text"
-        app:showAsAction="always" />
+        android:id="@+id/action_logout_Btn"
+        android:title="@string/action_logout_text" />
 </menu>

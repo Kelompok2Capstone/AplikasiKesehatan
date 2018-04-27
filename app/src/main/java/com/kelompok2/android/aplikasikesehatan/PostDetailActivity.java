@@ -2,142 +2,116 @@ package com.kelompok2.android.aplikasikesehatan;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.TextInputEditText;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.MenuItem;
-import android.widget.Button;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class PostDetailActivity extends AppCompatActivity {
     @BindView(R.id.tvDescription) //@BindView declare sekaligus inisialisasi view dengan menggunakan library ButterKnife
             TextView tvDescription;
-    @BindView(R.id.rvKomentar) //@BindView declare sekaligus inisialisasi view dengan menggunakan library ButterKnife
-            RecyclerView rvKomentar;
-    @BindView(R.id.etKomentar) //@BindView declare sekaligus inisialisasi view dengan menggunakan library ButterKnife
-            TextInputEditText etKomentar;
-    @BindView(R.id.btnKirim) //@BindView declare sekaligus inisialisasi view dengan menggunakan library ButterKnife
-            Button btnKirim;
-    @BindView(R.id.toolbar) //@BindView declare sekaligus inisialisasi view dengan menggunakan library ButterKnife
-            android.support.v7.widget.Toolbar toolbar;
-    private ArrayList<CommentModel> commentList; //arraylist untuk menyimpan hasil load komentar
-    private CommentAdapter mAdapter;
+//    @BindView(R.id.rvKomentar) //@BindView declare sekaligus inisialisasi view dengan menggunakan library ButterKnife
+//            RecyclerView rvKomentar;
+//    @BindView(R.id.etKomentar) //@BindView declare sekaligus inisialisasi view dengan menggunakan library ButterKnife
+//            TextInputEditText etKomentar;
+//    @BindView(R.id.btnKirim) //@BindView declare sekaligus inisialisasi view dengan menggunakan library ButterKnife
+//            Button btnKirim;
+//    @BindView(R.id.toolbar) //@BindView declare sekaligus inisialisasi view dengan menggunakan library ButterKnife
+//            android.support.v7.widget.Toolbar toolbar;
+    RecyclerView.Adapter mAdapter;
     public final static FirebaseAuth mAuth = FirebaseAuth.getInstance();
     public static FirebaseUser currentUser;
+    DatabaseReference databaseReference;
+    private String judul;
+    private String useremail;
+    private String userKomen;
+    private String desk;
+    private TextView tjudul;
+    private TextView tdesk;
+    private ImageView icomment;
+    private ImageView ithump;
+    List<KomenModel> komenList = new ArrayList<>();
+    RecyclerView recyclerView;
+//    PostModel komentar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_detail);
         ButterKnife.bind(this); //Binding ButterKnife pada activity ini
-        setSupportActionBar(toolbar);
-        displayHomeAsUpEnabled();
-        commentList = new ArrayList<>();
+        tjudul = (TextView)findViewById(R.id.tvjudul);
+        tdesk = (TextView)findViewById(R.id.tvDescription);
+        icomment = (ImageView) findViewById(R.id.comment);
+        ithump = (ImageView) findViewById(R.id. thump);
+        recyclerView = (RecyclerView) findViewById(R.id.rvKomentar); //referensi variable
+        Constant.mAuth.getCurrentUser();
+        // Setting RecyclerView size true.
+        recyclerView.setHasFixedSize(true); //referensi variable
 
-        mAdapter = new CommentAdapter(commentList);
-        rvKomentar.setAdapter(mAdapter);
+        // Setting RecyclerView layout as LinearLayout.
+        recyclerView.setLayoutManager(new LinearLayoutManager(PostDetailActivity.this));
+        Intent intent1 = getIntent(); //referensi variable
+        desk = intent1.getStringExtra("desk"); //referensi variable dari intent
+        judul = intent1.getStringExtra("judul");
+//        komentar = (PostModel) getIntent().getSerializableExtra("photoData");//referensi variable dari intent
+//        databaseReference = FirebaseDatabase.getInstance().getReference("komen/"+nama); //referensi variable dari intent
+        useremail = intent1.getStringExtra("uri"); //referensi variable dari intent
+//        userKomen = Constant.currentUser.getEmail();
+        tdesk.setText(desk);
+        tjudul.setText(judul);
+        icomment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PostDetailActivity.this, KomenActivity.class);
 
-        loadIntent();
+                intent.putExtra("judul1",judul);
+//                intent.putExtra("photoData1", komentar);
+                startActivity(intent);
+                finish();
+            }
+        });
+        databaseReference = FirebaseDatabase.getInstance().getReference("komentar/"+judul);
+        databaseReference.addValueEventListener(new ValueEventListener() {//eksekusi data dari firebase
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                komenList.clear();
+                for (DataSnapshot postSnapshot : snapshot.getChildren()) { //foreach memanggil data
 
-    }
+                    KomenModel imageUploadInfo = postSnapshot.getValue(KomenModel.class); //get data dari firebase
+                    //Toast.makeText(DetailGambar.this, imageUploadInfo.getUserKomen(), Toast.LENGTH_LONG).show();
+                    komenList.add(imageUploadInfo); //add data ke listviews
+                }
 
-    @Override
-    protected void onStart () {
+                mAdapter = new KomenAdapter(PostDetailActivity.this,komenList);//set adapter
 
-        super.onStart();
-        currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        if (currentUser == null){
-            login();
-        }
-    }
+                recyclerView.setAdapter(mAdapter); //set adapter
 
-    private void login() {
-        Intent intent = new Intent(PostDetailActivity.this, MainActivity.class);
-        startActivity(intent);
-        finish();
-    }
+                // Hiding the progress dialog.
 
-    PostModel photo;
-    private void loadIntent() {
-        tvDescription.setText(photo.getDesc() + "\nby: " + photo.getName());
-        setTitle(photo.getTitle()); //set judul toolbar
-        loadComment(); //load comment
-    }
-    private void loadComment() {
-        Constant.mypost.child(photo.getKey()).child("commentList")
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        commentList.clear();
-                        // This method is called once with the initial value and again
-                        // whenever data at this location is updated.
+            }
 
-                        for (final DataSnapshot ds : dataSnapshot.getChildren()) {
-                            CommentModel model = ds.getValue(CommentModel.class);
-                            commentList.add(model); //dimasukkan kedalam list
-                            mAdapter.notifyDataSetChanged(); //refresh data
-                        }
-                    }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
-                    @Override
-                    public void onCancelled(DatabaseError error) {
-                        // Failed to read value
-                        Log.w("", "Failed to read value.", error.toException());
-                        //showProgress(false);
-                    }
-                });
-    }
-
-    //menampilkan tombol back button diatas kiri
-    private void displayHomeAsUpEnabled() {
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
-    }
-
-    //method untuk handling btnKirim
-    @OnClick(R.id.btnKirim)
-    public void kirim() {
-        //validasi kosong
-        if (etKomentar.getText().toString().isEmpty()) {
-            Toast.makeText(this, "Harap isi komentar", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        //Insert atau push data komentar ke firebase
-        Constant.mypost.child(photo.getKey()).child("commentList").push().setValue(new CommentModel(
-                currentUser.getEmail().split("@")[0],
-                currentUser.getEmail(),
-                etKomentar.getText().toString()
-        ));
-
-        etKomentar.setText("");
-    }
-
-    //handler jika back button di klik
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                break;
-        }
-        return true;
+                // Hiding the progress dialog.
+            }
+        });
     }
 }
+

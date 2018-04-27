@@ -8,6 +8,37 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:267108865283:android:ea453450ea8f50cb",
+        "android_client_info": {
+          "package_name": "com.example.android.akuanaksehatmiriplinetoday"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "267108865283-vqa1dagdlln71mjbooi3lvu5lhmqjh8v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATx319YA7jdIc0CqwL0dQdGrLtJ3kkFyM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:267108865283:android:492199821efe5910",
         "android_client_info": {
           "package_name": "com.kelompok2.android.aplikasikesehatan"

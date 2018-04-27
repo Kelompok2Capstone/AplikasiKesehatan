@@ -3,24 +3,23 @@ package com.kelompok2.android.aplikasikesehatan;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-
 public class AwalActivity extends AppCompatActivity {
    // private Toolbar maintoolbar;
-
-    private FirebaseAuth mAuth;
     private Button logout;
+    private Button share;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_awal);
-        mAuth = FirebaseAuth.getInstance();
-        logout = (Button) findViewById(R.id.button3);
+
+//        share = (Button) findViewById(R.id.buttonshare);
+//        logout = (Button) findViewById(R.id.button3);
         //maintoolbar = (Toolbar) findViewById(R.id.toolbar2);
        // setSupportActionBar(maintoolbar);
 
@@ -29,17 +28,18 @@ public class AwalActivity extends AppCompatActivity {
 
     }
 
-
-
     @Override
-    protected void onStart () {
+    protected void onStart() {
 
         super.onStart();
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        if (currentUser == null){
+        Constant.mAuth.getCurrentUser();
+        if (Constant.mAuth == null){
             login();
         }
+
     }
+
+
 
     private void login() {
         Intent intent = new Intent(AwalActivity.this, MainActivity.class);
@@ -47,14 +47,39 @@ public class AwalActivity extends AppCompatActivity {
         finish();
     }
 
-    public void keluar(View view) {
 
-        logout();
+    private void logout() {
+        Constant.mAuth.signOut(); //logout firebase
+        Constant.currentUser = null;
+        login();
+    }
+
+    public void forum(View view) {
+        Intent intent1 = new Intent(AwalActivity.this, ForumActivity.class);
+        startActivity(intent1);
+        finish();
 
     }
 
-    private void logout() {
-        mAuth.signOut();
-        login();
+    private void profil() {
+        Intent intent2 = new Intent(AwalActivity.this, ProfilActivity.class);
+        startActivity(intent2);
+        finish();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu); // inflate atau memasukkan menu
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_logout_Btn:
+                logout();
+            case R.id.action_setting_Btn:
+                profil();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
