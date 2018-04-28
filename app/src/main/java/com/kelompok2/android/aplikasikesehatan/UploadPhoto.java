@@ -44,8 +44,8 @@ public class UploadPhoto extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_photo);
-        mAuth = FirebaseAuth.getInstance();
-        String online_user_id = mAuth.getCurrentUser().getUid();
+//        mAuth = FirebaseAuth.getInstance();
+        String online_user_id = Constant.mAuth.getCurrentUser().getUid();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference().child("User").child(online_user_id);
         mStorageRef = FirebaseStorage.getInstance().getReference().child("Profile_Image");
 
@@ -112,7 +112,7 @@ public class UploadPhoto extends AppCompatActivity {
             if (resultCode == RESULT_OK){
                 Uri resultUri = result.getUri();
 
-                String user_id = mAuth.getCurrentUser().getUid();
+                String user_id = Constant.mAuth.getCurrentUser().getUid();
                 StorageReference filePath = mStorageRef.child(user_id+".jpg");
                 filePath.putFile(resultUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                     @Override

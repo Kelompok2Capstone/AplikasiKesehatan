@@ -9,7 +9,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -30,13 +29,13 @@ public class ProfilActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profil);
 
-        firebaseAuth = FirebaseAuth.getInstance();
-        if (firebaseAuth.getCurrentUser() == null) {
+//        firebaseAuth = FirebaseAuth.getInstance();
+        if (Constant.mAuth.getCurrentUser() == null) {
             finish();
         }
         databaseReference = FirebaseDatabase.getInstance().getReference();
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-
+//        FirebaseUser user = firebaseAuth.getCurrentUser();
+        Constant.mAuth.getCurrentUser();
 
         editTextName = (EditText) findViewById(R.id.name);
         editTextAddress = (EditText) findViewById(R.id.address);
@@ -56,7 +55,7 @@ public class ProfilActivity extends AppCompatActivity implements View.OnClickLis
 
         UserInformation userInformation = new UserInformation(name, address, phone, pekerjaan);
 
-        String online_user_id = firebaseAuth.getCurrentUser().getUid();
+        String online_user_id = Constant.mAuth.getCurrentUser().getUid();
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference User = rootRef.child("User").child(online_user_id).push();
 
