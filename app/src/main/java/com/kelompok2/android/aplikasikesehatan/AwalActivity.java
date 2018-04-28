@@ -82,4 +82,16 @@ public class AwalActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    public void info(View view) {
+        Intent intent3 = new Intent(AwalActivity.this, InfoActivity.class);
+        startActivity(intent3);
+        finish();
+    }
+
+    public void fragment(View view) {
+        Intent intent4 = new Intent(AwalActivity.this, DietActivity.class);
+        startActivity(intent4);
+        finish();
+    }
 }

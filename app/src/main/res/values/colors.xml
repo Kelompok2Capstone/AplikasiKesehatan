@@ -14,4 +14,6 @@
     <color name="lightgrey">#d3d3d3</color>
     <color name="tabtextcolor">#fff</color>
     <color name="tabindicatorcolor">#2d2d2d</color>
+    <color name="white">#E6E6E6</color>
+    <color name="midblack">#424242</color>
 </resources>

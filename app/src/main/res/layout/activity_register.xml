@@ -1,77 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/wc"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
     tools:context="com.kelompok2.android.aplikasikesehatan.RegisterActivity">
 
-    <TextView
-        android:id="@+id/logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="LOGO"
-        android:textSize="50dp"
-        tools:layout_editor_absoluteX="127dp"
-        tools:layout_editor_absoluteY="16dp"
-        tools:ignore="MissingConstraints" />
-
-    <EditText
-        android:id="@+id/etEmail"
+    <ScrollView
+        android:id="@+id/ScrollView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/handsup"
+        android:padding="25dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/Register_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:text="Register"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:typeface="monospace" />
+
+            <EditText
+                android:id="@+id/etEmail"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Register_tv"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/register_uname"
+                android:gravity="center"
+                android:hint="Username"
+                android:inputType="text"
+                android:textColor="#000000"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etPass"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/etEmail"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/register_password"
+                android:gravity="center"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:textColor="#000000"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etConfPass"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/etPass"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/register_cnfpassword"
+                android:gravity="center"
+                android:hint="Confirm Password"
+                android:inputType="textPassword"
+                android:textColor="#000000"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/button_regis"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/etConfPass"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/register_button"
+                android:text="REGISTER"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                android:onClick="akunbaru"/>
+
+            <TextView
+                android:id="@+id/member_login_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/button_regis"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="Member Login?"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:typeface="monospace" />
+
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/view_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="50dp"
-        android:ems="10"
-        android:hint="Email"
-        android:inputType="textPersonName"
-        android:layout_below="@+id/email"/>
-
-    <EditText
-        android:id="@+id/etPass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/etEmail"
-        android:layout_marginTop="22dp"
-        android:ems="10"
-        android:hint="@string/etPassword"
-        android:inputType="textPassword"
-        tools:ignore="TextFields"
-        />
-    <EditText
-        android:id="@+id/etConfPass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/etPass"
-        android:layout_marginTop="22dp"
-        android:ems="10"
-        android:hint="@string/etPassword"
-        android:inputType="textPassword"
-        tools:ignore="TextFields"
-        />
-    <Button
-        android:id="@+id/button_regis"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/etConfPass"
-        android:layout_marginTop="35dp"
-        android:hint="@string/button_login"
-        android:onClick="akunbaru"/>
-
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/register_imview" />
 </RelativeLayout>

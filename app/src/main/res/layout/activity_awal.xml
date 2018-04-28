@@ -65,13 +65,15 @@
                 android:layout_height="64dp"
                 android:background="@drawable/circlebackgroundyellow"
                 android:src="@drawable/m_info"
-                android:padding="10dp"/>
+                android:padding="10dp"
+                android:onClick="info"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:layout_marginTop="10dp"
-                android:text="Are you sick?"/>
+                android:text="Are you sick?"
+                android:onClick="info"/>
             <!--<view-->
                 <!--android:layout_width="match_parent"-->
                 <!--android:layout_height="1dp"-->
@@ -83,7 +85,8 @@
                 android:gravity="center"
                 android:text="Find what caused you sick"
                 android:padding="5dp"
-                android:textColor="@android:color/darker_gray"/>
+                android:textColor="@android:color/darker_gray"
+                android:onClick="info"/>
         </LinearLayout>
     </android.support.v7.widget.CardView>
     <android.support.v7.widget.CardView
@@ -103,13 +106,15 @@
                 android:layout_height="64dp"
                 android:background="@drawable/circlebackgroundpurple"
                 android:src="@drawable/m_diet"
-                android:padding="10dp"/>
+                android:padding="10dp"
+                android:onClick="fragment"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:layout_marginTop="10dp"
-                android:text="Healthy Food"/>
+                android:text="Healthy Food"
+                android:onClick="fragment"/>
             <!--<view-->
                 <!--android:layout_width="match_parent"-->
                 <!--android:layout_height="1dp"-->
@@ -121,7 +126,8 @@
                 android:gravity="center"
                 android:text="Find your healthy food here"
                 android:padding="5dp"
-                android:textColor="@android:color/darker_gray"/>
+                android:textColor="@android:color/darker_gray"
+                android:onClick="fragment"/>
         </LinearLayout>
     </android.support.v7.widget.CardView>
 

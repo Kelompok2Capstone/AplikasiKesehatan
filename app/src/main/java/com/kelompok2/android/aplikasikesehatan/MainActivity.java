@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         LUsername = (EditText) findViewById(R.id.etUsername);
         LPassword = (EditText) findViewById(R.id.etPassword);
         LLogin = (Button) findViewById(R.id.button_login);
-        loginprogress= (ProgressBar) findViewById(R.id.progressBar3);
+//        loginprogress= (ProgressBar) findViewById(R.id.progressBar3);
 
         if(Constant.mAuth.getCurrentUser() != null){
 
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            loginprogress.setVisibility(View.VISIBLE);
+//                            loginprogress.setVisibility(View.VISIBLE);
                             Log.d("", "signInWithEmail:success");
                             FirebaseUser curUser = Constant.mAuth.getCurrentUser(); //ambil informasi user yang login
                             Constant.currentUser = curUser; //set di variabel global
@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
                             Log.w("", "signInWithEmail:failure", task.getException());
                             Toast.makeText(MainActivity.this, "Akun belum terdaftar",
                                     Toast.LENGTH_SHORT).show();
-                            loginprogress.setVisibility(View.INVISIBLE);
+//                            loginprogress.setVisibility(View.INVISIBLE);
                             //showProgress(false);
                         }
                     }

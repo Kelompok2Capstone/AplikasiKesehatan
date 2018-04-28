@@ -46,6 +46,7 @@ public class PostDetailActivity extends AppCompatActivity {
     private TextView tdesk;
     private ImageView icomment;
     private ImageView ithump;
+    private TextView tvuser;
     List<KomenModel> komenList = new ArrayList<>();
     RecyclerView recyclerView;
 //    PostModel komentar;
@@ -59,6 +60,7 @@ public class PostDetailActivity extends AppCompatActivity {
         tdesk = (TextView)findViewById(R.id.tvDescription);
         icomment = (ImageView) findViewById(R.id.comment);
         ithump = (ImageView) findViewById(R.id. thump);
+        tvuser = (TextView) findViewById(R.id.tvuser);
         recyclerView = (RecyclerView) findViewById(R.id.rvKomentar); //referensi variable
         Constant.mAuth.getCurrentUser();
         // Setting RecyclerView size true.
@@ -75,6 +77,7 @@ public class PostDetailActivity extends AppCompatActivity {
 //        userKomen = Constant.currentUser.getEmail();
         tdesk.setText(desk);
         tjudul.setText(judul);
+        tvuser.setText(useremail);
         icomment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
