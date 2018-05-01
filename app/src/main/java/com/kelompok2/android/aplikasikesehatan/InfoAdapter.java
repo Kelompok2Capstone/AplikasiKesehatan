@@ -49,7 +49,7 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.InfoViewHolder
         holder.deskripsi.setText(currentPenyakit.getDeskripsi());
         holder.penyebab.setText(currentPenyakit.getPenyebab());
         holder.pengobatan.setText(currentPenyakit.getPengobatan());
-
+        holder.jenis.setText(currentPenyakit.getPengobatan());
 
         Glide.with(mContext).load(url).into(holder.mPenyakitImage);
 
@@ -63,7 +63,7 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.InfoViewHolder
 
         private ImageView mPenyakitImage;
         private TextView mTitle;
-        private TextView deskripsi, penyebab, pengobatan;
+        private TextView deskripsi, penyebab, pengobatan, jenis;
         private Context mContext;
         private InfoModel mCurrentPenyakit;
 
@@ -77,6 +77,7 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.InfoViewHolder
             deskripsi = (TextView)itemView.findViewById(R.id.desk);
             penyebab = (TextView)itemView.findViewById(R.id.penyebab);
             pengobatan = (TextView)itemView.findViewById(R.id.pengobatan);
+            jenis = (TextView)itemView.findViewById(R.id.jenis);
 //            mInfo = (TextView) itemView.findViewById(R.id.infoTitle);
 
             mContext = context;
@@ -105,12 +106,14 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.InfoViewHolder
             String pengobatan = mPenyakitData.get(mPosition).getPengobatan();
             String desk = mPenyakitData.get(mPosition).getDeskripsi();
             String penyebab = mPenyakitData.get(mPosition).getPenyebab();
+            String jenis = mPenyakitData.get(mPosition).getJenis();
             String gambar = mPenyakitData.get(mPosition).getImage();
 //            intent1.putExtra("photoData", UploadInfo);
             intent1.putExtra("judul",nama);
             intent1.putExtra("desk",desk);
             intent1.putExtra("pengobatan",pengobatan);
             intent1.putExtra("penyebab" ,penyebab);
+            intent1.putExtra("jenis" ,jenis);
             intent1.putExtra("image", gambar);
             view.getContext().startActivity(intent1);
         }

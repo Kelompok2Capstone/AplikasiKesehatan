@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#2471A3</color>
+    <color name="colorPrimaryDark">#2471A3</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorDark">#181A24</color>
     <color name="colorWhite">#FFFFFF</color>
@@ -16,4 +16,5 @@
     <color name="tabindicatorcolor">#2d2d2d</color>
     <color name="white">#E6E6E6</color>
     <color name="midblack">#424242</color>
+    <color name="babyblue">#85C1E9</color>
 </resources>

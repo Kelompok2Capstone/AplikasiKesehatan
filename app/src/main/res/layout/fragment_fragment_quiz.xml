@@ -3,16 +3,20 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:gravity="center"
+    android:background="@drawable/background"
     tools:context="com.kelompok2.android.aplikasikesehatan.FragmentQuiz">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="
-        DAY 1
-        Breakfast: one mashed potato + little butter + oregano, pepper, chilli flakes, 2 glass of water
-        Lunch: sauteed vegetables(mushroom, bell, peppers, broccoli, purple cabbage and herbs), 2 glass of water
-        Dinner: Salad bowl(Lettuce, cucumber, carrot, cabbage, brocoli, lemon juice and seasoning, 2 glass of water"
+        Breakfast: One mashed potato, little butter, oregano, pepper, chilli flakes, 2 glass of water
+
+        Lunch:
+        sauteed vegetables(mushroom, bell, peppers, broccoli, purple cabbage and herbs), 2 glass of water
+
+        Dinner:
+        Salad bowl(Lettuce, cucumber, carrot, cabbage, brocoli, lemon juice and seasoning, 2 glass of water"
         android:textSize="20sp"
         android:textStyle="bold"
         />
@@ -22,6 +26,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="xxxxx" />
+        />
 
 </LinearLayout>

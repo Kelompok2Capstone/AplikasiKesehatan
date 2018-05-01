@@ -4,14 +4,20 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:gravity="center"
+    android:background="@drawable/background"
     tools:context="com.kelompok2.android.aplikasikesehatan.FragmentExplore">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Breakfast: one glass warm lime water, one apple, half bowl pomegranate, 2 glass of water
-Lunch: Fruit salad(apple,pear,watermelon,papaya,pomegranate) and 2 glass of water
-Dinner: whole papaya, 2 glass of water"
+        android:text="
+        Breakfast: one glass warm lime water, one apple, half bowl pomegranate, 2 glass of water
+
+        Lunch:
+        Fruit salad(apple,pear,watermelon,papaya,pomegranate) and 2 glass of water
+
+        Dinner:
+        whole papaya, 2 glass of water"
         android:textSize="20sp"
         android:textStyle="bold"
         />

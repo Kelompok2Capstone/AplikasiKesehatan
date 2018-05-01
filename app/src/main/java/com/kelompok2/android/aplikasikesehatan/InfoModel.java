@@ -9,16 +9,18 @@ public class InfoModel {
     private String deskripsi;
     private String pengobatan;
     private String penyebab;
+    private String jenis;
     private String image;
 
     public InfoModel(){}
 
-    public InfoModel(String nama, String deskripsi, String pengobatan, String penyebab, String image) {
+    public InfoModel(String nama, String deskripsi, String pengobatan, String penyebab, String jenis, String image) {
         this.nama = nama;
         this.deskripsi = deskripsi;
         this.pengobatan = pengobatan;
         this.penyebab = penyebab;
         this.image = image;
+        this.jenis = jenis;
     }
 
     public String getNama() {
@@ -52,6 +54,15 @@ public class InfoModel {
     public void setPenyebab(String penyebab) {
         this.penyebab = penyebab;
     }
+
+    public String getJenis() {
+        return jenis;
+    }
+
+    public void setJenis(String jenis) {
+        this.jenis = jenis;
+    }
+
 
     public String getImage() {
         return image;

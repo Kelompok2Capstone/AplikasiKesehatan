@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -21,7 +22,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText LEmail;
     private EditText LPass;
     private EditText LConfPass;
-    private Button LAkun;
+    private TextView LAkun;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +31,7 @@ public class RegisterActivity extends AppCompatActivity {
         LEmail = (EditText) findViewById(R.id.etEmail);
         LPass = (EditText) findViewById(R.id.etPass);
         LConfPass = (EditText) findViewById(R.id.etConfPass);
-        LAkun = (Button) findViewById(R.id.button_regis);
+        LAkun = (TextView) findViewById(R.id.textView);
 
     }
 
@@ -48,7 +49,7 @@ public class RegisterActivity extends AppCompatActivity {
    private void sendtoMain() {
        Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
        startActivity(intent);
-       finish();
+//       finish();
     }
 
     private ProgressDialog pDialog;
@@ -85,5 +86,9 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    public void btnbacktologin(View view) {
+     sendtoMain();
     }
 }

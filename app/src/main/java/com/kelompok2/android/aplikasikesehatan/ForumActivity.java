@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -39,6 +40,7 @@ public class ForumActivity extends AppCompatActivity {
     // Creating List of ImageUploadInfo class.
     List<PostModel> list = new ArrayList<>();
 
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forum);
@@ -59,6 +61,7 @@ public class ForumActivity extends AppCompatActivity {
 
         // Showing progress dialog.
         progressDialog.show();
+        Constant.currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
         // Setting up Firebase image upload folder path in databaseReference.
         // The path is already defined in MainActivity.
@@ -100,7 +103,8 @@ public class ForumActivity extends AppCompatActivity {
             }
         });
 
-       Constant.mAuth.getCurrentUser(); //referensi variable
+//       Constant.mAuth.getCurrentUser(); //referensi variable
+
        //Constant.currentUser.getEmail();
     }
     @Override
@@ -138,5 +142,16 @@ public class ForumActivity extends AppCompatActivity {
         Intent intent2 = new Intent(ForumActivity.this, ProfilActivity.class);
         startActivity(intent2);
         finish();
+    }
+
+    @Override
+    protected void onStart() {
+
+        super.onStart();
+        Constant.mAuth.getCurrentUser();
+        if (Constant.mAuth == null){
+            login();
+        }
+
     }
 }

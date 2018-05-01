@@ -3,119 +3,111 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/wc"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background"
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true"
     tools:context="com.kelompok2.android.aplikasikesehatan.RegisterActivity">
 
-    <ScrollView
-        android:id="@+id/ScrollView"
+    <TextView
+        android:id="@+id/register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true"
+        android:layout_above="@+id/etEmail"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:background="@drawable/handsup"
-        android:padding="25dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentLeft="true">
+        android:layout_marginBottom="14dp"
+        android:layout_marginTop="36dp"
+        android:text="REGISTER"
+        android:textColor="@color/midblack"
+        android:textSize="40dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/etPass"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="58dp"
+        android:background="#F2F2F2"
+        android:drawableLeft="@drawable/ic_action_email"
+        android:ems="10"
+        android:hint=" Email"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/etPass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/etConfPass"
+        android:layout_alignLeft="@+id/etEmail"
+        android:layout_alignStart="@+id/etEmail"
+        android:layout_marginBottom="19dp"
+        android:background="#F2F2F2"
+        android:drawableLeft="@drawable/ic_action_name"
+        android:ems="10"
+        android:hint=" Password"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/etConfPass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button_regis"
+        android:layout_alignLeft="@+id/etPass"
+        android:layout_alignStart="@+id/etPass"
+        android:layout_marginBottom="33dp"
+        android:background="#F2F2F2"
+        android:drawableLeft="@drawable/ic_action_name"
+        android:ems="10"
+        android:hint=" Confirm Password"
+        android:inputType="textPassword" />
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/button_regis"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@+id/member_login_tv"
+        android:layout_alignEnd="@+id/member_login_tv"
+        android:layout_alignRight="@+id/member_login_tv"
+        android:layout_marginBottom="49dp"
+        app:cardBackgroundColor="@color/midblack"
+        app:cardCornerRadius="25dp"
+        app:cardElevation="10dp">
 
         <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" >
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/button_regis"
+            android:layout_alignEnd="@+id/button_regis"
+            android:layout_alignRight="@+id/button_regis">
 
             <TextView
-                android:id="@+id/Register_tv"
+                android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="30dp"
-                android:text="Register"
-                android:textSize="30dp"
-                android:textStyle="bold"
-                android:typeface="monospace" />
-
-            <EditText
-                android:id="@+id/etEmail"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/Register_tv"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="25dp"
-                android:background="@drawable/register_uname"
-                android:gravity="center"
-                android:hint="Username"
-                android:inputType="text"
-                android:textColor="#000000"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/etPass"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/etEmail"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="25dp"
-                android:background="@drawable/register_password"
-                android:gravity="center"
-                android:hint="Password"
-                android:inputType="textPassword"
-                android:textColor="#000000"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/etConfPass"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/etPass"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="25dp"
-                android:background="@drawable/register_cnfpassword"
-                android:gravity="center"
-                android:hint="Confirm Password"
-                android:inputType="textPassword"
-                android:textColor="#000000"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/button_regis"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/etConfPass"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="25dp"
-                android:background="@drawable/register_button"
+                android:onClick="akunbaru"
                 android:text="REGISTER"
-                android:textColor="#000000"
-                android:textSize="20dp"
-                android:onClick="akunbaru"/>
-
-            <TextView
-                android:id="@+id/member_login_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/button_regis"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
-                android:text="Member Login?"
-                android:textSize="15dp"
-                android:textStyle="bold"
-                android:typeface="monospace" />
-
-
-
+                android:textColor="#fff" />
         </RelativeLayout>
-    </ScrollView>
 
-    <ImageView
-        android:id="@+id/view_1"
+    </android.support.v7.widget.CardView>
+
+    <TextView
+        android:id="@+id/member_login_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/register_imview" />
+        android:layout_marginBottom="84dp"
+        android:onClick="btnbacktologin"
+        android:text="Already registered? Login here"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:typeface="monospace" />
+
+
 </RelativeLayout>

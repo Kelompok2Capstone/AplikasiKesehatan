@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AplikasiKesehatan</string>
+    <string name="app_name">Aku Anak Sehat</string>
     <string name="button_login">Sign In</string>
     <string name="etPassword">Password</string>
     <string name="etUsername">Username</string>

@@ -34,7 +34,8 @@
             android:layout_centerHorizontal="true"
             android:padding="8dp"
             android:text="dummy"
-            android:textSize="36dp"/>
+            android:textSize="36dp"
+            />
 
 
         <TextView
@@ -44,7 +45,8 @@
             android:layout_below="@id/labelTitle"
             android:padding="8dp"
             android:text="info_placeholder"
-            android:visibility="invisible"/>
+            android:visibility="invisible"
+            android:textColor="@color/colorWhite"/>
 
         <TextView
             android:id="@+id/pengobatan"
@@ -53,16 +55,30 @@
             android:layout_below="@id/labelTitle"
             android:padding="8dp"
             android:text="info_placeholder"
-            android:visibility="invisible"/>
+            android:visibility="invisible"
+            android:textColor="@color/colorWhite"/>
 
         <TextView
             android:id="@+id/penyebab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:padding="8dp"
+            android:text="info_placeholder"
+            android:textColor="@color/colorWhite"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/jenis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_below="@id/labelTitle"
             android:padding="8dp"
             android:text="info_placeholder"
-            android:visibility="invisible"/>
+            android:visibility="invisible"
+            android:textColor="@color/colorWhite"/>
 
 
     </RelativeLayout>

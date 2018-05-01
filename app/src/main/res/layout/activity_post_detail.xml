@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context="com.kelompok2.android.aplikasikesehatan.PostDetailActivity">
 
     <android.support.v4.widget.NestedScrollView
@@ -93,7 +94,8 @@
                             android:layout_alignParentEnd="true"
                             android:layout_alignParentRight="true"
                             android:layout_alignParentTop="true"
-                            android:src="@drawable/ic_insert_comment_black_24dp" />
+                            android:src="@drawable/ic_insert_comment_black_24dp"
+                            />
 
                     </RelativeLayout>
                 </LinearLayout>

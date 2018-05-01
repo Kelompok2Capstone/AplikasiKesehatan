@@ -21,18 +21,18 @@
         </activity>
         <activity android:name=".RegisterActivity" />
         <activity android:name=".AwalActivity" />
-        <activity android:name=".AddPostActivity" />
+        <activity android:name=".AddPostActivity" android:parentActivityName=".ForumActivity"/>
         <activity
             android:name=".PostDetailActivity"
             android:parentActivityName=".ForumActivity" />
-        <activity android:name=".ForumActivity" />
+        <activity android:name=".ForumActivity" android:parentActivityName=".AwalActivity"/>
         <activity
             android:name=".KomenActivity"
-            android:parentActivityName=".PostDetailActivity" />
+            android:parentActivityName=".ForumActivity" />
         <activity android:name=".DietActivity" android:parentActivityName=".AwalActivity" />
-        <activity android:name=".InfoActivity" />
+        <activity android:name=".InfoActivity" android:parentActivityName=".AwalActivity" />
         <activity android:name=".InfoDetailActivity" android:parentActivityName=".InfoActivity" />
-        <activity android:name=".ProfilActivity" />
+        <activity android:name=".ProfilActivity" android:parentActivityName=".AwalActivity" />
         <activity android:name=".UploadPhoto"></activity>
         <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"/>
     </application>

@@ -26,7 +26,7 @@ import butterknife.ButterKnife;
 public class PostDetailActivity extends AppCompatActivity {
     @BindView(R.id.tvDescription) //@BindView declare sekaligus inisialisasi view dengan menggunakan library ButterKnife
             TextView tvDescription;
-//    @BindView(R.id.rvKomentar) //@BindView declare sekaligus inisialisasi view dengan menggunakan library ButterKnife
+    //    @BindView(R.id.rvKomentar) //@BindView declare sekaligus inisialisasi view dengan menggunakan library ButterKnife
 //            RecyclerView rvKomentar;
 //    @BindView(R.id.etKomentar) //@BindView declare sekaligus inisialisasi view dengan menggunakan library ButterKnife
 //            TextInputEditText etKomentar;
@@ -49,6 +49,7 @@ public class PostDetailActivity extends AppCompatActivity {
     private TextView tvuser;
     List<KomenModel> komenList = new ArrayList<>();
     RecyclerView recyclerView;
+    FirebaseUser user;
 //    PostModel komentar;
 
     @Override
@@ -56,13 +57,13 @@ public class PostDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_detail);
         ButterKnife.bind(this); //Binding ButterKnife pada activity ini
-        tjudul = (TextView)findViewById(R.id.tvjudul);
-        tdesk = (TextView)findViewById(R.id.tvDescription);
+        tjudul = (TextView) findViewById(R.id.tvjudul);
+        tdesk = (TextView) findViewById(R.id.tvDescription);
         icomment = (ImageView) findViewById(R.id.comment);
-        ithump = (ImageView) findViewById(R.id. thump);
+        ithump = (ImageView) findViewById(R.id.thump);
         tvuser = (TextView) findViewById(R.id.tvuser);
         recyclerView = (RecyclerView) findViewById(R.id.rvKomentar); //referensi variable
-        Constant.mAuth.getCurrentUser();
+        Constant.currentUser = FirebaseAuth.getInstance().getCurrentUser();
         // Setting RecyclerView size true.
         recyclerView.setHasFixedSize(true); //referensi variable
 
@@ -83,13 +84,12 @@ public class PostDetailActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(PostDetailActivity.this, KomenActivity.class);
 
-                intent.putExtra("judul1",judul);
+                intent.putExtra("judul1", judul);
 //                intent.putExtra("photoData1", komentar);
                 startActivity(intent);
-                finish();
             }
         });
-        databaseReference = FirebaseDatabase.getInstance().getReference("komentar/"+judul);
+        databaseReference = FirebaseDatabase.getInstance().getReference("komentar/" + judul);
         databaseReference.addValueEventListener(new ValueEventListener() {//eksekusi data dari firebase
             @Override
             public void onDataChange(DataSnapshot snapshot) {
@@ -101,7 +101,7 @@ public class PostDetailActivity extends AppCompatActivity {
                     komenList.add(imageUploadInfo); //add data ke listviews
                 }
 
-                mAdapter = new KomenAdapter(PostDetailActivity.this,komenList);//set adapter
+                mAdapter = new KomenAdapter(PostDetailActivity.this, komenList);//set adapter
 
                 recyclerView.setAdapter(mAdapter); //set adapter
 
@@ -116,5 +116,22 @@ public class PostDetailActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    protected void onStart() {
+
+        super.onStart();
+        Constant.mAuth.getCurrentUser();
+        if (Constant.mAuth == null) {
+            login();
+        }
+    }
+
+    private void login() {
+        Intent intent = new Intent(PostDetailActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }
+
 

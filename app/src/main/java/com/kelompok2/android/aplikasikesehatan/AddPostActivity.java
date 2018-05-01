@@ -39,7 +39,7 @@ public class AddPostActivity extends AppCompatActivity {
         tvPost = (EditText) findViewById(R.id.tvPost);
         pbDialog = new ProgressDialog(this);
         btnPost = (Button) findViewById(R.id.btnPost);
-
+        Constant.mAuth.getCurrentUser();
         email = Constant.currentUser.getEmail().toString();
         databaseReference = FirebaseDatabase.getInstance().getReference("postingan");
 //        mAuth = FirebaseAuth.getInstance();
@@ -72,7 +72,7 @@ public class AddPostActivity extends AppCompatActivity {
                 }
 
         });
-        Constant.mAuth.getCurrentUser();
+
     }
 
 //    private void PostForum() {
