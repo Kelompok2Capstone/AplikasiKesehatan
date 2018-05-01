@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/handsup"
     tools:context="com.kelompok2.android.aplikasikesehatan.ForumActivity">
 
     <android.support.v7.widget.RecyclerView
@@ -25,7 +26,8 @@
         android:layout_marginBottom="20dp"
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
-        android:src="@drawable/ic_star_black_24dp" />
+        android:src="@android:drawable/ic_input_add"
+        android:tint="@color/white"/>
 
 
 </RelativeLayout>

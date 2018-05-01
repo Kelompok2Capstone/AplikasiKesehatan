@@ -46,6 +46,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "267108865283-rcooh7oi3751foh3k0c14hvvvlguetsl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kelompok2.android.aplikasikesehatan",
+            "certificate_hash": "daf1262783612ca2429f43f5ee4041434fdd84f1"
+          }
+        },
+        {
           "client_id": "267108865283-lnofb4vr1p6ftjkg9kfjebeg279e6s4b.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

@@ -72,7 +72,6 @@ public class ForumActivity extends AppCompatActivity {
                 for (DataSnapshot postSnapshot : snapshot.getChildren()) {
 
                     PostModel imageUploadInfo = postSnapshot.getValue(PostModel.class);
-                    Toast.makeText(ForumActivity.this, imageUploadInfo.getEmail(), Toast.LENGTH_LONG).show();
                     list.add(imageUploadInfo);
                 }
 
@@ -98,7 +97,6 @@ public class ForumActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ForumActivity.this, AddPostActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
 
@@ -113,28 +111,32 @@ public class ForumActivity extends AppCompatActivity {
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_logout_Btn) {
-
-            // Destroying login season.
-            Constant.mAuth.signOut(); //logout firebase
-            Constant.currentUser = null;
-
-            // Finishing current User Profile activity.
-            finish();
-
-            // Redirect to Login Activity after click on logout button.
-            Intent intent = new Intent(ForumActivity.this, MainActivity.class);
-            startActivity(intent);
-
-            return true;
+        switch (item.getItemId()) {
+            case R.id.action_logout_Btn:
+                logout();
+            case R.id.action_setting_Btn:
+                profil();
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void login() {
+        Intent intent = new Intent(ForumActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+
+    private void logout() {
+        Constant.mAuth.signOut(); //logout firebase
+        Constant.currentUser = null;
+        login();
+    }
+
+    private void profil() {
+        Intent intent2 = new Intent(ForumActivity.this, ProfilActivity.class);
+        startActivity(intent2);
+        finish();
     }
 }

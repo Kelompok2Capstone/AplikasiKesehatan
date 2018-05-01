@@ -91,7 +91,6 @@ public class PostDetailActivity extends AppCompatActivity {
         });
         databaseReference = FirebaseDatabase.getInstance().getReference("komentar/"+judul);
         databaseReference.addValueEventListener(new ValueEventListener() {//eksekusi data dari firebase
-
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 komenList.clear();

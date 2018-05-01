@@ -1,5 +1,6 @@
 package com.kelompok2.android.aplikasikesehatan;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -50,7 +51,13 @@ public class RegisterActivity extends AppCompatActivity {
        finish();
     }
 
+    private ProgressDialog pDialog;
     public void akunbaru(View view) {
+
+        pDialog = new ProgressDialog(this);
+        pDialog.setMessage("Please wait..");
+        pDialog.show();
+
         String Email = LEmail.getText().toString();
         String Password = LPass.getText().toString();
         String ConfPasswprd = LConfPass.getText().toString();
@@ -63,6 +70,7 @@ public class RegisterActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("", "createUserWithEmail:success");
                             Constant.currentUser = Constant.mAuth.getCurrentUser(); //simpan data user
+                            pDialog.dismiss();
                             Toast.makeText(RegisterActivity.this, "Berhasil mendaftar, Silahkan login!", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(RegisterActivity.this, MainActivity.class)); //panggil login activity
                             finish();
@@ -70,6 +78,7 @@ public class RegisterActivity extends AppCompatActivity {
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("", "createUserWithEmail:failure", task.getException());
+                            pDialog.dismiss();
                             Toast.makeText(RegisterActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                             //updateUI(null);

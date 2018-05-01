@@ -19,13 +19,14 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:gravity="center">
+
             <ImageView
                 android:layout_width="64dp"
                 android:layout_height="64dp"
                 android:background="@drawable/circlebackgroundgreen"
-                android:src="@drawable/m_forum2"
+                android:onClick="forum"
                 android:padding="10dp"
-                android:onClick="forum"/>
+                android:src="@drawable/m_forum2" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

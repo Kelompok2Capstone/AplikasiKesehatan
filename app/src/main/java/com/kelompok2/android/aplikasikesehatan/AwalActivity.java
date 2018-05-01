@@ -57,14 +57,12 @@ public class AwalActivity extends AppCompatActivity {
     public void forum(View view) {
         Intent intent1 = new Intent(AwalActivity.this, ForumActivity.class);
         startActivity(intent1);
-        finish();
 
     }
 
     private void profil() {
         Intent intent2 = new Intent(AwalActivity.this, ProfilActivity.class);
         startActivity(intent2);
-        finish();
     }
 
     @Override
@@ -86,12 +84,10 @@ public class AwalActivity extends AppCompatActivity {
     public void info(View view) {
         Intent intent3 = new Intent(AwalActivity.this, InfoActivity.class);
         startActivity(intent3);
-        finish();
     }
 
     public void fragment(View view) {
         Intent intent4 = new Intent(AwalActivity.this, DietActivity.class);
         startActivity(intent4);
-        finish();
     }
 }

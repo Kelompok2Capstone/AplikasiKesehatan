@@ -41,8 +41,6 @@ public class KomenActivity extends AppCompatActivity {
                 databaseReference.push().setValue(new KomenModel(kom.getText().toString(),email));
 //                KomenModel note = new KomenModel(kom.getText().toString(),email);
 //                databaseReference.child(key).setValue(note);
-                Intent intent = new Intent(KomenActivity.this, PostDetailActivity.class);
-                startActivity(intent);
                 finish();
 
             }

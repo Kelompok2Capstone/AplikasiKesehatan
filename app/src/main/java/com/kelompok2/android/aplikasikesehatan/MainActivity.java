@@ -1,6 +1,7 @@
 package com.kelompok2.android.aplikasikesehatan;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         LLogin = (Button) findViewById(R.id.button_login);
 //        loginprogress= (ProgressBar) findViewById(R.id.progressBar3);
 
-        if(Constant.mAuth.getCurrentUser() != null){
+        if (Constant.mAuth.getCurrentUser() != null) {
 
             // Finishing current Login Activity.
             finish();
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
         super.onStart();
         FirebaseUser curUser = Constant.mAuth.getCurrentUser();
-        if (curUser != null){
+        if (curUser != null) {
             sendtoMain();
         }
 
@@ -64,16 +65,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    private ProgressDialog pDialog;
     public void launchRegisterActivity(View view) {
-
-
-
+        pDialog = new ProgressDialog(this);
+        pDialog.setMessage("Please wait..");
+        pDialog.show();
         signIn();
-
-
-
     }
-    public void signIn(){
+
+    public void signIn() {
 
         String LEmail = LUsername.getText().toString();
         String LPass = LPassword.getText().toString();
@@ -87,11 +87,13 @@ public class MainActivity extends AppCompatActivity {
                             Log.d("", "signInWithEmail:success");
                             FirebaseUser curUser = Constant.mAuth.getCurrentUser(); //ambil informasi user yang login
                             Constant.currentUser = curUser; //set di variabel global
+                            pDialog.dismiss();
                             startActivity(new Intent(MainActivity.this, AwalActivity.class)); //panggil activity main
                             finish();
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("", "signInWithEmail:failure", task.getException());
+                            pDialog.dismiss();
                             Toast.makeText(MainActivity.this, "Akun belum terdaftar",
                                     Toast.LENGTH_SHORT).show();
 //                            loginprogress.setVisibility(View.INVISIBLE);
